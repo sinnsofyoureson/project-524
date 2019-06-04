@@ -65,7 +65,7 @@ const Component: React.FC = (props: any) => {
 
   const classes = useStyles();
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(3);
   const [tasks, setTasks] = useState<Array<A>>([]);
@@ -190,7 +190,7 @@ const Component: React.FC = (props: any) => {
                             </TableCell>
                             <TableCell component="th" scope="row" padding="none" align="right">
                               <img
-                                style={{ height: '48px', width: '48px', borderRadius: '100%', marginTop: '8px' }}
+                                style={{ height: dense ? '24px' : '48px', width: dense ? '24px' : '48px', borderRadius: '100%', marginTop: '8px' }}
                                 src={task.image_path}
                                 alt={task.id}
                               />
@@ -214,7 +214,7 @@ const Component: React.FC = (props: any) => {
               <TablePagination
                 rowsPerPageOptions={[3, 5, 8]}
                 component="div"
-                count={tasksCount}
+                count={tasks.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 backIconButtonProps={{
